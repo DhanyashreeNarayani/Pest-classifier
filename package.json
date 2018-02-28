@@ -1,0 +1,16 @@
+{
+  "name": "locale",
+  "version": "1.0.0",
+  "description": "chatbot",
+  "main": "index.js",
+  "scripts": {
+    "test": "none"
+  },
+  "author": "dhanya",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "request": "^2.83.0"
+  }
+}
