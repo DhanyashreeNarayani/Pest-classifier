@@ -31,7 +31,7 @@ app.post('/webhook/',(req,res)=>{
 
                 var options = {
                     method: 'POST',
-                    url: 'https://pestdetector.localtunnel.me/dhanya',
+                    url: 'https://yckpnbctiy.localtunnel.me/dhanya',
                     headers: {
                         'content-type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' 
                     },
