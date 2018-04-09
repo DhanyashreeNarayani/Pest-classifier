@@ -52,7 +52,10 @@ app.post('/webhook/',(req,res)=>{
         }
         if(event.message && event.message.text){
             let text = event.message.text;
-            sendText(sender, `Send only Image of a insect to get the name of it.`)
+           if(text=='hi')
+            sendText(sender, `hi.`)
+           else
+            senText(sender,`Sorry I don't understand`)
         }
     }
     res.sendStatus(200);
