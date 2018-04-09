@@ -55,7 +55,7 @@ app.post('/webhook/',(req,res)=>{
            if(text=='hi')
             sendText(sender, `hi.`)
            else
-            senText(sender,`Sorry I don't understand`)
+            sendText(sender,`Sorry I don't understand`)
         }
     }
     res.sendStatus(200);
