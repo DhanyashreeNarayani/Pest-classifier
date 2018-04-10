@@ -31,7 +31,7 @@ app.post('/webhook/',(req,res)=>{
 
                 var options = {
                     method: 'POST',
-                    url: 'https://tensorflow.ragzzyr.com/dhanya',
+                    url: 'https://tensorapp.ragzzyr.com/dhanya',
                     headers: {
                         'content-type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' 
                     },
