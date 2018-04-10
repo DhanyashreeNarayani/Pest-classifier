@@ -52,9 +52,13 @@ app.post('/webhook/',(req,res)=>{
         }
         if(event.message && event.message.text){
             let text = event.message.text;
-           if(text=='hi')
-            sendText(sender, `hi.`)
-           else
+           if(text=='hi'||text=='Hi'||text=='Hello')
+            sendText(sender, `hi! ! :D This is pest detector I am here to help you use the right fertilizers and natural methods to eliminate pests from your farm. Do you want me help you identify any pest?? or do you know the pest or disease name?`)
+           else if(text=='Yeah that's thrips')
+            sendText(sender, `Neem Oil sprays can be used to knockdown thrips infestations before introducing beneficials. If the population is unaffected by neem oil, then consider using Pyganic Gardening, a Pyrethrin-based contact insecticide.`)
+          else if(text=='No')
+            sendText(sender,`Can you please send me the image of the pest or affected leaf?`) 
+          else
             sendText(sender,`Sorry I don't understand`)
         }
     }
