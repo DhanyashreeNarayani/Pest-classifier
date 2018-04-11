@@ -64,10 +64,11 @@ app.post('/webhook/',(req,res)=>{
                    mine.action="noaction" 
                 }
                 var actionwithresponce=mine['fulfillment'].speech;
+                sendText(sender,actionwithresponce);
                 
             });
 
-            sendText(sender,actionwithresponce);
+           
             /*let text = event.message.text;
            if(text=='hi'||text=='Hi'||text=='Hello')
             sendText(sender, `hi! ! :D This is pest detector I am here to help you use the right fertilizers and natural methods to eliminate pests from your farm. Do you want me help you identify any pest?? or do you know the pest or disease name?`)
