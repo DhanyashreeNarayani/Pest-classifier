@@ -48,6 +48,7 @@ app.post('/webhook/',(req,res)=>{
 
                     // console.log(JSON.parse(body));
                     var result = JSON.parse(body);
+                    console.log(result.pestName);
                     var requa=appi.textRequest(result.pestName,{
                         sessionId: '12345'
                         });
