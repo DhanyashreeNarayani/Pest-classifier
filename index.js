@@ -1,6 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const request = require('request').defaults({encoding: null});
+var apai=require('apiai');
+var appi = apai("43a0d573c5564e62bf4d8d38100a2e23");
 
 const app = express();
 
@@ -46,16 +48,33 @@ app.post('/webhook/',(req,res)=>{
 
                     // console.log(JSON.parse(body));
                     var result = JSON.parse(body);
-                    sendText(sender, `Pest Name: ${result.pestName}`)        
+                    var requa=appi.textRequest(result.pestName,{
+                        sessionId: '12345'
+                        });
+                    requa.on('response',function(response) {
+                        console.log("success",response)
+                        var mine=response.result
+                        console.log(mine['fulfillment'].speech);
+                        if(mine.action=='undefined'){
+                           mine.action="noaction" 
+                        }
+                        var actionwithresponce=mine['fulfillment'].speech;
+                        sendText(sender,actionwithresponce);
+                        
+                    });
+                    requa.on('error', function(error) {
+                        //res.send(mine['fulfillment'].speech) ;
+                           console.log(error);
+                    });
+                    requa.end();
+                    //sendText(sender, `Pest Name: ${result.pestName}`)        
                 });
             }
         }
         if(event.message && event.message.text){
-           	var apai=require('apiai');
-            var appi = apai("43a0d573c5564e62bf4d8d38100a2e23");
             var requa=appi.textRequest(event.message.text,{
                 sessionId: '12345'
-            });
+                });
             requa.on('response',function(response) {
                 console.log("success",response)
                 var mine=response.result
@@ -73,15 +92,6 @@ app.post('/webhook/',(req,res)=>{
             });
             requa.end();
            
-            /*let text = event.message.text;
-           if(text=='hi'||text=='Hi'||text=='Hello')
-            sendText(sender, `hi! ! :D This is pest detector I am here to help you use the right fertilizers and natural methods to eliminate pests from your farm. Do you want me help you identify any pest?? or do you know the pest or disease name?`)
-           else if(text=='Yeah thats thrips')
-            sendText(sender, `Neem Oil sprays can be used to knockdown thrips infestations before introducing beneficials. If the population is unaffected by neem oil, then consider using Pyganic Gardening, a Pyrethrin-based contact insecticide.`)
-          else if(text=='No')
-            sendText(sender,`Can you please send me the image of the pest or affected leaf?`) 
-          else
-            sendText(sender,`Sorry I don't understand`)*/
         }
     }
     res.sendStatus(200);
