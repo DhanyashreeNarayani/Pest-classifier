@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const request = require('request').defaults({encoding: null});
 const API_AI_TOKEN = 'y0fba48aabda74cefbb84bc7b8ec64056';
 const apiAiClient = require('apiai')(API_AI_TOKEN);
-const apiaiSession = apiAiClient.textRequest(message, {sessionId: '12345'});
+
 const app = express();
 
 app.use(bodyParser.urlencoded({extended: false}));
@@ -53,6 +53,7 @@ app.post('/webhook/',(req,res)=>{
             }
         }
         if(event.message && event.message.text){
+            const apiaiSession = apiAiClient.textRequest(event.message.text, {sessionId: '12345'});
             apiaiSession.on('response', (response) => {
                 result = response.result.fulfillment.speech;
                 sendText(sender,result);
