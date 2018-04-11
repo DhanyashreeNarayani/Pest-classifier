@@ -70,7 +70,7 @@ app.post('/webhook/',(req,res)=>{
             requa.on('error', function(error) {
                 //res.send(mine['fulfillment'].speech) ;
                    console.log(error);
-            }
+            });
            
             /*let text = event.message.text;
            if(text=='hi'||text=='Hi'||text=='Hello')
