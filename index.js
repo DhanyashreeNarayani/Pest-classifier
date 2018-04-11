@@ -63,7 +63,7 @@ app.post('/webhook/',(req,res)=>{
                 if(mine.action=='undefined'){
                    mine.action="noaction" 
                 }
-                var actionwithresponce=mine['fulfillment'].speech;
+                var actionwithresponce=response.result.fulfillment.speech;
                 sendText(sender,actionwithresponce);
                 
             });
