@@ -52,8 +52,8 @@ app.post('/webhook/',(req,res)=>{
         }
         if(event.message && event.message.text){
 			var apiai=require('apiai');
-            var app = apiai("43a0d573c5564e62bf4d8d38100a2e23");
-            var requa=app.textRequest(event.message.text,{
+            var appi = apiai("43a0d573c5564e62bf4d8d38100a2e23");
+            var requa=appi.textRequest(event.message.text,{
                 sessionId: '12345'
             });
             requa.on('response',function(response) {
