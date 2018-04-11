@@ -51,8 +51,8 @@ app.post('/webhook/',(req,res)=>{
             }
         }
         if(event.message && event.message.text){
-           	var apiai=require('apiai');
-            var appi = apiai("43a0d573c5564e62bf4d8d38100a2e23");
+           	var apai=require('apiai');
+            var appi = apai("43a0d573c5564e62bf4d8d38100a2e23");
             var requa=appi.textRequest(event.message.text,{
                 sessionId: '12345'
             });
@@ -71,6 +71,7 @@ app.post('/webhook/',(req,res)=>{
                 //res.send(mine['fulfillment'].speech) ;
                    console.log(error);
             });
+            requa.end();
            
             /*let text = event.message.text;
            if(text=='hi'||text=='Hi'||text=='Hello')
